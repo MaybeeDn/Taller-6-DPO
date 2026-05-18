@@ -30,17 +30,28 @@ public class PanelDetallesRestaurante extends JPanel
 
     public PanelDetallesRestaurante( )
     {
-        // Configura la etiqueta para el nombre
-        // TODO completar el constructor
-
-        // Configura la etiqueta para la calificación
-        // TODO completar el constructor
-
-        // Configura el checkbox para indicar si ya se visitaó o no el restaurante
-        // TODO completar el constructor
-
-        // Organiza los elementos en la venta
-        // TODO completar el constructor
+    	setLayout(new GridLayout(3, 1));
+    	
+    	
+    	JPanel panelNombre = new JPanel(new FlowLayout(FlowLayout.LEFT));
+    	panelNombre.add(new JLabel("Nombre: "));
+    	labNombre = new JLabel("");
+    	panelNombre.add(labNombre);
+    	add(panelNombre);
+    	
+    	
+    	JPanel panelCalif = new JPanel(new FlowLayout(FlowLayout.LEFT));
+    	panelCalif.add(new JLabel("Clasificacion"));
+    	labCalificacion = new JLabel();
+    	panelCalif.add(labCalificacion);
+    	add(panelCalif);
+    	
+    	JPanel panelVisitado = new JPanel( new FlowLayout(FlowLayout.LEFT));
+    	panelVisitado.add(new JLabel("Visitado: "));
+    	chkVisitado = new JCheckBox();
+    	chkVisitado.setEnabled(false);
+    	panelVisitado.add(chkVisitado);
+    	add(panelVisitado);
     }
 
     /**
@@ -51,7 +62,9 @@ public class PanelDetallesRestaurante extends JPanel
      */
     private void actualizarRestaurante( String nombre, int calificacion, boolean visitado )
     {
-     // TODO completar actualizarRestaurante
+     labNombre.setText(nombre);
+     labCalificacion.setIcon(buscarIconoCalificacion(calificacion));
+     chkVisitado.setSelected(visitado);
     }
 
     /**
